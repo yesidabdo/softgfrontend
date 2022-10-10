@@ -3,7 +3,13 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  baseUrlVehicle:'http://129.151.109.58:3000/vehicle',
+  baseUrlDriver:'http://129.151.109.58:3000/driver',
+  baseUrlRoute:'http://129.151.109.58:3000/route',
+  baseUrlSchedule:'http://129.151.109.58:3000/schedule',
+  baseUrlLogin:'http://129.151.109.58:3000/login',
+
 };
 
 /*

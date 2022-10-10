@@ -1,0 +1,118 @@
+
+
+<div>
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+      <div class="form-group">
+        <label for="first_name">First Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="first_name"
+          required
+          [(ngModel)]="driver.first_name"
+          name="first_name"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="last_name">Last Name</label>
+        <input
+          class="form-control"
+          id="last_name"
+          required
+          [(ngModel)]="driver.last_name"
+          name="last_name"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="ssd">SSD</label>
+        <input
+          class="form-control"
+          id="ssd"
+          required
+          [(ngModel)]="driver.ssd"
+          name="ssd"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="dob">Date Of Birth</label>
+        <input
+          type="date"
+          class="form-control"
+          id="dob"
+          required
+          [(ngModel)]="driver.dob"
+          name="dob"
+        />
+      </div>
+      
+
+    <div class="form-group">
+      <label for="address">Address</label>
+      <input
+        
+        class="form-control"
+        id="address"
+        required
+        [(ngModel)]="driver.address"
+        name="address"
+      />
+    </div>
+    <div class="form-group">
+      <label for="city">City</label>
+      <input
+        type="text"
+        class="form-control"
+        id="city"
+        required
+        [(ngModel)]="driver.city"
+        name="city"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="zip">Zip</label>
+      <input
+        type="text"
+        class="form-control"
+        id="zip"
+        required
+        [(ngModel)]="driver.zip"
+        name="zip"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Phone</label>
+      <input
+        type="tel"
+        class="form-control"
+        id="phone"
+        required
+        [(ngModel)]="driver.phone"
+        name="phone"
+      />
+    </div>
+
+<div class="form-group">
+<label for="active">Active</label>
+  <mat-slide-toggle 
+    id="active"
+    name="active" 
+    [(ngModel)]="driver.active">
+ </mat-slide-toggle>
+</div>     
+
+      <button (click)="saveDriver()" class="btn btn-success">Submit</button>
+    </div>
+
+    <div *ngIf="submitted">
+      <h4>Driver was created successfully!</h4>
+      <button class="btn btn-success" (click)="newDriver()">Add</button>
+    </div>
+    
+  </div>
+</div>

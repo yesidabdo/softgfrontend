@@ -1,0 +1,109 @@
+
+    <form>
+      <div class="form-group">
+        <label for="driver_id">Routes</label>
+        <select
+          class="form-control"
+          id="driver_id"
+          required
+          [(ngModel)]="newSchedule.route_id"
+          name="driver_id"
+          >
+          <h1>{{newSchedule.route|json}}</h1>
+          <option *ngFor="let route of routes; let i = index"
+          [ngValue]="route.id"
+          >#{{route.id+ '  '+route.description}}
+          </option>
+      </select>
+      </div>
+
+
+      <div class="form-group">
+        <label for="week_day">Week Day</label>
+        <input
+          class="form-control"
+          id="week_day"
+          required
+          [(ngModel)]="newSchedule.week_num"
+          name="week_day"
+          />
+      
+      </div>
+  
+      <div class="form-group">
+        <label for="from">From</label>
+        <input
+          type="date"
+          class="form-control"
+          id="from"
+          required
+          [(ngModel)]="newSchedule.from"
+          name="from"
+          />
+      </div>
+
+      <div class="form-group">
+        <label for="to">To</label>
+        <input
+          type="date" 
+          class="form-control"
+          id="to"
+          required
+          [(ngModel)]="newSchedule.to"
+          name="to"
+          />
+      
+      </div>
+      <div class="form-group">
+        <label for="active">Active</label>
+          <mat-slide-toggle 
+            id="active"
+            name="active" 
+            [(ngModel)]="newSchedule.active">
+         </mat-slide-toggle>
+        </div>     
+        
+  
+
+      <button *ngIf="!this.willUpdate" class="btn btn-success" (click)="saveSchedule()">Submit</button>
+      <div *ngIf="this.willUpdate" >
+        <button  class="btn btn-primary" (click)="updateSchedule()">Update</button>
+        <button  class="btn btn-danger"(click)="clearForm()">Cancel</button>
+      </div>
+      
+    </form>
+
+  
+  
+
+
+
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Route</th>
+        <th>Week Day</th>
+        <th>From</th>
+        <th>State</th>
+        <th>To</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let schedule of schedules">
+        <td>{{ schedule.id }}</td>
+        <td>{{ schedule.route?.description }}</td>
+        <td>{{ schedule.week_num }}</td>
+        <td>{{ schedule.active ? "Active🟢" : "Pending 🔴" }}</td>
+        
+        <td>{{ schedule.from }}</td>
+        <td>{{ schedule.to }}</td>
+        <td><a class="sm-btn btn-primary btn mr-1" (click)="editSchedule(schedule)">Edit</a>
+
+          <a class="sm-btn btn-danger btn mr-1"  (click)="deleteSchedule(schedule.id||0)">Delete</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  

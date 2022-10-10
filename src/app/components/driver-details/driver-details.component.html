@@ -1,0 +1,131 @@
+<div>
+    <div *ngIf="currentDriver.id" class="edit-form">
+      <h4>Tutorial</h4>
+      <form>
+        <div class="form-group">
+          <label for="first_name">First Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="first_name"
+            required
+            [(ngModel)]="currentDriver.first_name"
+            name="first_name"
+          />
+        </div>
+  
+        <div class="form-group">
+          <label for="last_name">Last Name</label>
+          <input
+            class="form-control"
+            id="last_name"
+            required
+            [(ngModel)]="currentDriver.last_name"
+            name="last_name"
+          />
+        </div>
+  
+        <div class="form-group">
+          <label for="ssd">SSD</label>
+          <input
+            class="form-control"
+            id="ssd"
+            required
+            [(ngModel)]="currentDriver.ssd"
+            name="ssd"
+          />
+        </div>
+  
+        <div class="form-group">
+          <label for="dob">Date Of Birth</label>
+          <input
+            type="date"
+            class="form-control"
+            id="dob"
+            required
+            [(ngModel)]="currentDriver.dob"
+            name="dob"
+          />
+        </div>
+        
+  
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input
+          
+          class="form-control"
+          id="address"
+          required
+          [(ngModel)]="currentDriver.address"
+          name="address"
+        />
+      </div>
+      <div class="form-group">
+        <label for="city">City</label>
+        <input
+          type="text"
+          class="form-control"
+          id="city"
+          required
+          [(ngModel)]="currentDriver.city"
+          name="city"
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="zip">Zip</label>
+        <input
+          type="text"
+          class="form-control"
+          id="zip"
+          required
+          [(ngModel)]="currentDriver.zip"
+          name="zip"
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="phone">Phone</label>
+        <input
+          type="tel"
+          class="form-control"
+          id="phone"
+          required
+          [(ngModel)]="currentDriver.phone"
+          name="phone"
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="active">Active</label>
+          <mat-slide-toggle 
+            id="active"
+            name="active" 
+            [(ngModel)]="currentDriver.active">
+         </mat-slide-toggle>
+        </div>     
+        
+      </form>
+  
+      <button
+      type="button"  
+      class="btn btn-primary"
+        
+        (click)="updateDriver()"
+      >
+        Update
+      </button>
+      
+      <button class="btn btn-danger" (click)="deleteDriver()">
+        Delete
+      </button>
+  
+      
+      <p>{{ message }}</p>
+    </div>
+  
+    <div *ngIf="!currentDriver.id">
+      <br />
+      <p>Loading...</p>
+    </div>
+  </div>

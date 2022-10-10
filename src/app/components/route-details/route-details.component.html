@@ -1,0 +1,85 @@
+<div>
+    <div *ngIf="currentRoute.id" class="edit-form">
+      <h4>Route</h4>
+      <form>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <input
+            type="text"
+            class="form-control"
+            id="description"
+            required
+            [(ngModel)]="currentRoute.description"
+            name="description"
+          />
+        </div>
+  
+        <div class="form-group">
+          <label for="driver_id">Driver</label>
+          <select
+            class="form-control"
+            id="driver_id"
+            required
+            [(ngModel)]="currentRoute.driver_id"
+            name="driver_id"
+            >
+
+            <option *ngFor="let driver of drivers; let i = index"
+            [ngValue]="driver.id"
+            >#{{driver.id+ '  '+driver.first_name+ '  '+driver.last_name}}
+            </option>
+        </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="vehicle_id">Vehicle</label>
+          <select
+            class="form-control"
+            id="vehicle_id"
+            required
+            [(ngModel)]="currentRoute.vehicle_id"
+            name="vehicle_id"
+            >
+
+            <option *ngFor="let vehicle of vehicles; let i = index"
+            [ngValue]="vehicle.id"
+            >#{{vehicle.id+ '  '+vehicle.description}}
+            </option>
+        </select>
+        </div>
+  
+     
+  
+      <div class="form-group">
+        <label for="active">Active</label>
+          <mat-slide-toggle 
+            id="active"
+            name="active" 
+            [(ngModel)]="currentRoute.active">
+         </mat-slide-toggle>
+        </div>     
+        
+      </form>
+  
+      <button
+      type="button"  
+      class="btn btn-primary"
+        
+        (click)="updateRoute()"
+      >
+        Update
+      </button>
+      
+      <button class="btn btn-danger" (click)="deleteRoute()">
+        Delete
+      </button>
+  
+      
+      <p>{{ message }}</p>
+    </div>
+  
+    <div *ngIf="!currentRoute.id">
+      <br />
+      <p>Loading...</p>
+    </div>
+  </div>

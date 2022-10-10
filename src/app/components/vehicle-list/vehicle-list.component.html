@@ -1,0 +1,65 @@
+
+
+
+<div class="list row">
+    <div class="col-md-6">
+      <h4>Vehicles List</h4>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let vehicle of vehicles; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveVehicle(vehicle, i)"
+        >
+          <b>#{{vehicle.id}}</b>{{ ' '+  vehicle.description}}
+        </li>
+      </ul>
+  
+    </div>
+    <div class="col-md-6">
+      <div *ngIf="currentVehicle.id">
+        <h4>Vehicle Details</h4>
+        
+        <div>
+          <label><strong>Description:</strong></label>
+          {{ currentVehicle.description}}
+        </div>
+        <div>
+          <div>
+            <label><strong>Year:</strong></label>
+            {{ currentVehicle.year}}
+          </div>
+        
+          <label><strong>Make:</strong></label>
+          {{ currentVehicle.make}}
+        </div>
+        
+        
+        <div>
+            <label><strong>Capacity:</strong></label>
+            {{ currentVehicle.capacity}}
+          </div>
+          
+          
+        <div>
+          <label><strong>Status:</strong></label>
+          {{ currentVehicle.active ? "Active" : "Pending" }}
+        </div>
+  
+        
+        <a class="btn-sm btn-warning" routerLink="/vehicles/{{currentVehicle.id }}">
+          Edit
+        </a>
+        <a class="btn-sm btn-danger" [routerLink]="[]" (click)="deleteVehicle()">
+          Delete
+        </a>
+      </div>
+  
+      <div *ngIf="!currentVehicle">
+        <br />
+        <p>Please click on a Vehicle</p>
+      </div>
+    </div>
+  </div>
+  
+  

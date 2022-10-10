@@ -1,0 +1,6 @@
+.submit-form {
+    max-width: 80%;
+    margin: auto;
+  }
+  
+  @import "~angular-notifier/styles.css";

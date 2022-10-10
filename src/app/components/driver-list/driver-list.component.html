@@ -1,0 +1,74 @@
+
+
+
+<div class="list row">
+ 
+  <div class="col-md-6">
+    <h4>Drivers List</h4>
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let driver of drivers; let i = index"
+        [class.active]="i == currentIndex"
+        (click)="setActiveDriver(driver, i)"
+      >
+        <b>#{{driver.id}}</b>{{ ' '+  driver.first_name + ' ' + driver.last_name }}
+      </li>
+    </ul>
+
+    
+  </div>
+  <div class="col-md-6">
+    <div *ngIf="currentDriver.id">
+      <h4>Driver</h4>
+      <div>
+        <label><strong>Name:</strong></label> {{ currentDriver.first_name + ' ' + currentDriver.last_name }}
+      </div>
+      <div>
+        <label><strong>Description:</strong></label>
+        {{ currentDriver.ssd}}
+      </div>
+      <div>
+        <div>
+          <label><strong>Phone:</strong></label>
+          {{ currentDriver.phone}}
+        </div>
+      
+        <label><strong>Date Of Birth:</strong></label>
+        {{ currentDriver.dob}}
+      </div>
+      
+      
+      <div>
+          <label><strong>Address:</strong></label>
+          {{ currentDriver.address}}
+        </div>
+        <div>
+          <label><strong>City:</strong></label>
+          {{ currentDriver.city}}
+        </div>
+        <div>
+          <label><strong>ZIP:</strong></label>
+          {{ currentDriver.zip}}
+        </div>
+      <div>
+        <label><strong>Status:</strong></label>
+        {{ currentDriver.active ? "Active" : "Pending" }}
+      </div>
+
+      
+      <a class="btn-sm btn-warning" routerLink="/drivers/{{currentDriver.id }}">
+        Edit
+      </a>
+      <a class="btn-sm btn-danger" [routerLink]="[]" (click)="deleteDriver()">
+        Delete
+      </a>
+    </div>
+
+    <div *ngIf="!currentDriver">
+      <br />
+      <p>Please click on a Driver</p>
+    </div>
+  </div>
+</div>
+

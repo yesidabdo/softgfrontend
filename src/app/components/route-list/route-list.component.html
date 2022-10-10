@@ -1,0 +1,62 @@
+
+
+
+<div class="list row">
+    
+    <div class="col-md-6">
+      <h4>Routes List</h4>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let route of routes; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveRoute(route, i)"
+        >
+          <b>#{{route.id}}</b>{{ ' '+  route.description}}
+        </li>
+      </ul>
+  
+      
+    </div>
+    <div class="col-md-6">
+      <div *ngIf="currentRoute.id">
+        <h4>Route</h4>
+        
+        <div>
+          <label><strong>Description:</strong></label>
+          {{ currentRoute.description}}
+        </div>
+        <div>
+          <div>
+            <label><strong>Driver:</strong></label>
+            {{currentRoute.driver.first_name }}   {{currentRoute.driver.last_name}}
+          </div>
+        
+          <label><strong>Vehicle:</strong></label>
+          {{ currentRoute.vehicle.description}}
+        </div>
+        
+        
+        
+        <div>
+          <label><strong>Status:</strong></label>
+          {{ currentRoute.active ? "Active" : "Pending" }}
+        </div>
+  
+        
+        <a class="btn-sm btn-warning" routerLink="/routes/{{currentRoute.id }}">
+          Edit
+        </a>
+        <a class="btn-sm btn-danger" [routerLink]="[]" (click)="deleteRoute()">
+          Delete
+        </a>
+      </div>
+  
+      <div *ngIf="!currentRoute">
+        <br />
+        <p>Please click on a Route</p>
+      </div>
+    </div>
+  </div>
+  
+  

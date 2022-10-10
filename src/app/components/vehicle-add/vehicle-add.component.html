@@ -1,0 +1,74 @@
+
+    <form>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <input
+            type="text"
+            class="form-control"
+            id="description"
+            required
+            [(ngModel)]="vehicle.description"
+            name="description"
+          />
+        </div>
+  
+        <div class="form-group">
+          <label for="year">Year</label>
+          <input
+            class="form-control"
+            id="year"
+            required
+            [(ngModel)]="vehicle.year"
+            name="year"
+          />
+        </div>
+  
+        <div class="form-group">
+          <label for="make">MAKE</label>
+          <input
+            class="form-control"
+            id="make"
+            required
+            [(ngModel)]="vehicle.make"
+            name="make"
+          />
+        </div>
+  
+        <div class="form-group">
+          <label for="capacity">Capacity</label>
+          <input
+            type="text"
+            class="form-control"
+            id="capacity"
+            required
+            [(ngModel)]="vehicle.capacity"
+            name="capacity"
+          />
+        </div>
+        
+  
+     
+  
+      <div class="form-group">
+        <label for="active">Active</label>
+          <mat-slide-toggle 
+            id="active"
+            name="active" 
+            [(ngModel)]="vehicle.active">
+         </mat-slide-toggle>
+        </div>     
+        
+    
+  
+  
+        <button (click)="saveVehicle()" class="btn btn-success">Submit</button>
+      
+  
+      <div *ngIf="submitted">
+        <h4>Vehicle was created successfully!</h4>
+        <button class="btn btn-success" (click)="newVehicle()">Add</button>
+      </div>
+      
+    
+  
+  
