@@ -38,10 +38,6 @@ export class VehicleListComponent implements OnInit {
           this.notifier.notify('success', 'Vehicle Deleted Succefully!');
           this.vehicles= response;
           this.refreshList()
-        },
-          
-        error => {
-          console.log(error);
         });
   }
   retrieveVehicles(): void {

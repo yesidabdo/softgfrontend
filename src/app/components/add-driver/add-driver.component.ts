@@ -66,9 +66,6 @@ export class AddDriverComponent implements OnInit {
           this.submitted = true;
           this.notifier.notify('success', 'Driver created succefully!')
           this.router.navigate(['/drivers'])
-        },
-        error => {
-          console.log(error);
         });
   }
 

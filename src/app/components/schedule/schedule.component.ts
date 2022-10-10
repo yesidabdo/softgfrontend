@@ -55,9 +55,6 @@ export class ScheduleComponent implements OnDestroy, OnInit {
             this.notifierService.notify('success', 'Schedule created succefully!');
             this.dtTrigger.unsubscribe();
             this.getSchedule();
-          },
-          error => {
-            console.log(error);
           });
     }
 
@@ -71,24 +68,17 @@ export class ScheduleComponent implements OnDestroy, OnInit {
             this.getSchedule();
             
             this.clearForm();
-          },
-          error => {
-            console.log(error);
           });
     }
 
     deleteSchedule(id:number): void {
       this.scheduleService.delete(id)
-        .subscribe(
-          response => {
+        .subscribe(response => {
             console.log(response);            
             this.notifierService.notify('success', 'Schedule deleted succefully!');
             this.dtTrigger.unsubscribe();
             this.getSchedule();            
             this.clearForm();
-          },
-          error => {
-            console.log(error);
           });
     }
     

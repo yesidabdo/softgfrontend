@@ -54,9 +54,6 @@ export class VehicleAddComponent implements OnInit {
           this.submitted = true;
           this.notifier.notify('success', 'Vehicle created succefully!')
           this.router.navigate(['/vehicles'])
-        },
-        error => {
-          console.log(error);
         });
   }
 

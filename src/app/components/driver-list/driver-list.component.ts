@@ -38,11 +38,8 @@ export class DriverListComponent implements OnInit {
           this.notifier.notify('success', 'Driver Deleted Succefully!');
           this.drivers= response;
           this.refreshList()
-        },
-          
-        error => {
-          console.log(error);
-        });
+        }
+        );
   }
   retrieveDrivers(): void {
     this.driverService.getAll()

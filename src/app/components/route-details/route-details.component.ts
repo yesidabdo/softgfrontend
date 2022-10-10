@@ -66,9 +66,6 @@ export class RouteDetailsComponent implements OnInit {
           
 
           this.router.navigate(['/routes']);
-        },
-        error => {
-          console.log(error);
         });
   }
 

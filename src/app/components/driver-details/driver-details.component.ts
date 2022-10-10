@@ -30,7 +30,9 @@ export class DriverDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.message = '';
-    this.getDriver(this.route.snapshot.params['id']);
+
+    const id= this.route.snapshot.params['id'];
+    this.getDriver(id);
     
 
   }
@@ -38,13 +40,14 @@ export class DriverDetailsComponent implements OnInit {
   getDriver(id: string): void {
     this.driverService.get(id)
     .subscribe({
-      next:(data) => {
+      next:(data)=>{
+        console.log(data);
         this.currentDriver= data;
       }
-     });
+    });
     }
   
-  
+    
 
   updatePublished(status: boolean): void {
     const data = {
@@ -61,9 +64,6 @@ export class DriverDetailsComponent implements OnInit {
           this.currentDriver.active = status;
           console.log(response);
           this.message = response.message ? response.message : 'The status was updated successfully!';
-        },
-        error => {
-          console.log(error);
         });
   }
 
@@ -72,14 +72,8 @@ export class DriverDetailsComponent implements OnInit {
     this.driverService.update(this.currentDriver.id, this.currentDriver)
       .subscribe(
         response => {
-          this.notifier.notify('success','Driver Updated Succefully');
-          
-          
-
+          this.notifier.notify('success','Driver Updated Succefully');               
           this.router.navigate(['/drivers']);
-        },
-        error => {
-          console.log(error);
         });
   }
 
@@ -89,9 +83,6 @@ export class DriverDetailsComponent implements OnInit {
         response => {
           this.notifier.notify('success', 'Driver Deleted!');
           this.router.navigate(['/drivers']);
-        },
-        error => {
-          console.log(error);
         });
   }
 }

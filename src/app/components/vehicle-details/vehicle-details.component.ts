@@ -69,9 +69,6 @@ export class VehicleDetailsComponent implements OnInit {
         response => {
           this.notifier.notify('success', 'Vehicle Deleted!');
           this.router.navigate(['/vehicles']);
-        },
-        error => {
-          console.log(error);
         });
   }
 }

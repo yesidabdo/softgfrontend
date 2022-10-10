@@ -28,7 +28,7 @@ export class DriverService {
 
   get(id: any): Observable<Driver> {
     console.log(id);
-    return this.http.get(`${baseUrl}/${id}`,{headers});
+    return this.http.get<Driver>(`${baseUrl}/${id}`,{headers});
   }
 
   create(data: any): Observable<any> {
